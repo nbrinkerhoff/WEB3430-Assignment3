@@ -1,5 +1,4 @@
 # compiled output
-dist/*
 !dist/.keep
 /tmp
 /out-tsc
