@@ -47,130 +47,7 @@ export function App(props) {
         </div>
         <Switch>
           <Route exact path="/iris">
-            <div className="row">
-              <div className="col-7">
-                <div className="titleWords">
-                  <h4><strong>The whole dataset - 150 data examples</strong></h4>
-                  <h6>Page 1 of 15</h6>
-                </div>
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Sepal Length</th>
-                      <th scope="col">Sepal Width</th>
-                      <th scope="col">Petal Length</th>
-                      <th scope="col">Petal Width</th>
-                      <th scope="col">Species</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {
-                    iris.map((item, index) => {
-                      if(Math.floor(index / 10) == page)
-                          return (<tr key={index}>
-                            <th scope="row">{index+1}</th>
-                            <td>{item.sepalLength}</td>
-                            <td>{item.sepalWidth}</td>
-                            <td>{item.petalLength}</td>
-                            <td>{item.petalWidth}</td>
-                            <td>{item.species}</td>
-                          </tr>)
-                    })
-                  }
-                  </tbody>
-                </table>
-                <nav aria-label="Page navigation example">
-                  <ul className="pagination">
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(0)}>1</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(1)}>2</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(2)}>3</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(3)}>4</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(4)}>5</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(5)}>6</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(6)}>7</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(7)}>8</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(8)}>9</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(9)}>10</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(10)}>11</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(11)}>12</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(12)}>13</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(13)}>14</a></li>
-                    <li className="page-item"><a className="page-link" onClick={()=> setPage(14)}>15</a></li>
-                  </ul>
-                </nav>
-              </div>
-              <div className="col-5">
-                <div className="summaryTable rounded-3">
-                  <table className="table">
-                    <tr>
-                      <td>
-
-                      </td>
-                      <td>
-                        <img src="/images/setosa.png" alt="setosa picture"/>
-                      </td>
-                      <td>
-                        <img src="/images/versicolor.png" alt="versicolor picture"/>
-                      </td>
-                      <td>
-                        <img src="/images/virginica.png" alt="virginica picture"/>
-                      </td>
-                    </tr>
-                    <thead>
-                      {/* <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr> */}
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>Name</th>
-                        <td>Setosa</td>
-                        <td>Versicolor</td>
-                        <td>Virginica</td>
-                      </tr>
-                      <tr>
-                        <th>Count</th>
-                        <td>50</td>
-                        <td>50</td>
-                        <td>50</td>
-                      </tr>
-                      <tr>
-                        <th>Link</th>
-                        <td>
-                          <button className="btn-primary">
-                            <Link to="/iris/setosa" className="pageLinks">Link</Link>
-                          </button>
-                        </td>
-                        <td>
-                          <button className="btn-primary">
-                            <Link to="/iris/versicolor" className="pageLinks">Link</Link>
-                          </button>
-                        </td>
-                        <td>
-                          <button className="btn-primary">
-                            <Link to="/iris/virginica" className="pageLinks">Link</Link>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div className="summaryTitle">
-                    <br/>
-                    <h2>Summary</h2>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                  </div>
-                </div>
-                <br/>
-              </div>
-            </div>
+            <Tables/>
           </Route>
           <Route path="/iris/:flower">
             <Flower/>
@@ -196,8 +73,140 @@ export function App(props) {
   )
 }
 
+export function Tables(props) {
+    const {iris, setIris, page, setPage} = useContext(IrisContext)
+    return(
+        <>
+            <div className="row">
+                <div className="col-7">
+                    <div className="titleWords">
+                        <h4><strong>The whole dataset - 150 data examples</strong></h4>
+                        <h6>Page 1 of 15</h6>
+                    </div>
+                    <table className="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Sepal Length</th>
+                            <th scope="col">Sepal Width</th>
+                            <th scope="col">Petal Length</th>
+                            <th scope="col">Petal Width</th>
+                            <th scope="col">Species</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                        iris.map((item, index) => {
+                            if(Math.floor(index / 10) == page)
+                                return (<tr key={index}>
+                                <th scope="row">{index+1}</th>
+                                <td>{item.sepalLength}</td>
+                                <td>{item.sepalWidth}</td>
+                                <td>{item.petalLength}</td>
+                                <td>{item.petalWidth}</td>
+                                <td>{item.species}</td>
+                                </tr>)
+                        })
+                        }
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination">
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(0)}>1</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(1)}>2</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(2)}>3</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(3)}>4</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(4)}>5</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(5)}>6</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(6)}>7</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(7)}>8</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(8)}>9</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(9)}>10</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(10)}>11</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(11)}>12</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(12)}>13</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(13)}>14</a></li>
+                        <li className="page-item"><a className="page-link" onClick={()=> setPage(14)}>15</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div className="col-5">
+                    <div className="summaryTable rounded-3">
+                        <table className="table">
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <img src="/images/setosa.png" alt="setosa picture"/>
+                                </td>
+                                <td>
+                                    <img src="/images/versicolor.png" alt="versicolor picture"/>
+                                </td>
+                                <td>
+                                    <img src="/images/virginica.png" alt="virginica picture"/>
+                                </td>
+                            </tr>
+                            <thead>
+                                {/* <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                </tr> */}
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <td>Setosa</td>
+                                    <td>Versicolor</td>
+                                    <td>Virginica</td>
+                                </tr>
+                                <tr>
+                                    <th>Count</th>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <th>Link</th>
+                                    <td>
+                                        <button className="btn-primary">
+                                            <Link to="/iris/setosa" className="pageLinks">Link</Link>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="btn-primary">
+                                            <Link to="/iris/versicolor" className="pageLinks">Link</Link>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="btn-primary">
+                                            <Link to="/iris/virginica" className="pageLinks">Link</Link>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div className="summaryTitle">
+                            <br/>
+                            <h2>Summary</h2>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                <br/>
+                </div>
+            </div>
+        </>
+    )
+}
+
 export function Flower(props) {
-  const {iris, setIris, currentPage, setCurrentPage} = useContext(IrisContext)
+  const {iris, setIris, page, setPage} = useContext(IrisContext)
   let {flower} = useParams()
 
 
