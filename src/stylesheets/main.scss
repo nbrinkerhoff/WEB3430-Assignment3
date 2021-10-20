@@ -1,2 +1,90 @@
 // Your styles go here
 @import "~bootstrap/scss/bootstrap";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+}
+
+.paragraphs {
+    text-align: justify;
+}
+
+footer {
+    color: black;
+    font-weight: bold;
+    border-top: 2px solid purple;
+    & .MyName {
+        text-align: left;
+    }
+
+    & .RightsReserved {
+        text-align: right;
+    }
+}
+
+.row {
+    border-bottom: grey;
+}
+
+Table {
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    & .summaryTitle {
+        font-size: 18px;
+        color: purple;
+        text-align: center;
+    }
+
+    & .paginatedTableClass {
+        width: 100%;
+    }
+}
+
+
+.summaryTable {
+    background: lightgray;
+
+    // & .summaryTitle {
+    //     color: purple;
+    //     text-align: center;
+    // }
+}
+
+.titleWords {
+    text-align: center;
+}
+
+.logoIcon {
+    height: 10%;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+.pageLinks {
+    color: white;
+    text-decoration: none;
+}
+
+.summaryTitle {
+    color: purple;
+    text-align: center;
+}
+
+.purpleButton {
+    background: purple;
+}
+
+.flowerPicture {
+    height: 80%;
+    width: 80%;
+}
