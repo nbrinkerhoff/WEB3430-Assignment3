@@ -85,29 +85,29 @@ export function Tables(props) {
                     </div>
                     <table className="table">
                         <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Sepal Length</th>
-                            <th scope="col">Sepal Width</th>
-                            <th scope="col">Petal Length</th>
-                            <th scope="col">Petal Width</th>
-                            <th scope="col">Species</th>
-                        </tr>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Sepal Length</th>
+                              <th scope="col">Sepal Width</th>
+                              <th scope="col">Petal Length</th>
+                              <th scope="col">Petal Width</th>
+                              <th scope="col">Species</th>
+                          </tr>
                         </thead>
                         <tbody>
-                        {
-                        iris.map((item, index) => {
-                            if(Math.floor(index / 10) == page)
-                                return (<tr key={index}>
-                                <th scope="row">{index+1}</th>
-                                <td>{item.sepalLength}</td>
-                                <td>{item.sepalWidth}</td>
-                                <td>{item.petalLength}</td>
-                                <td>{item.petalWidth}</td>
-                                <td>{item.species}</td>
-                                </tr>)
-                        })
-                        }
+                          {
+                            iris.map((item, index) => {
+                                if(Math.floor(index / 10) == page)
+                                    return (<tr key={index}>
+                                    <th scope="row">{index+1}</th>
+                                    <td>{item.sepalLength}</td>
+                                    <td>{item.sepalWidth}</td>
+                                    <td>{item.petalLength}</td>
+                                    <td>{item.petalWidth}</td>
+                                    <td>{item.species}</td>
+                                    </tr>)
+                            })
+                          } 
                         </tbody>
                     </table>
                     <nav aria-label="Page navigation example">
@@ -133,7 +133,8 @@ export function Tables(props) {
                 <div className="col-5">
                     <div className="summaryTable rounded-3">
                         <table className="table">
-                            <tr>
+                            <thead>
+                              <tr>
                                 <td>
 
                                 </td>
@@ -146,14 +147,7 @@ export function Tables(props) {
                                 <td>
                                     <img src="/images/virginica.png" alt="virginica picture"/>
                                 </td>
-                            </tr>
-                            <thead>
-                                {/* <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                </tr> */}
+                              </tr>
                             </thead>
                             <tbody>
                                 <tr>
